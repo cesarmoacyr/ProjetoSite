@@ -1482,9 +1482,25 @@ img {
         gap: 40px;
     }
 
+    .processo-visual {
+        order: 2;
+    }
+
+    .processo-etapas {
+        order: 1;
+    }
+
     .funil-css {
         max-width: 100%;
+        width: 100%;
     }
+
+    .funil-step-1 { width: 100%; }
+    .funil-step-2 { width: 93%; }
+    .funil-step-3 { width: 86%; }
+    .funil-step-4 { width: 79%; }
+    .funil-step-5 { width: 72%; }
+    .funil-step-6 { width: 65%; }
 
     .servicos-grid {
         grid-template-columns: 1fr;
