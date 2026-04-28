@@ -731,6 +731,92 @@ img {
 }
 
 /* =========================================
+   PROCESSO / FUNIL
+   ========================================= */
+.processo {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+}
+
+.processo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    margin-top: 56px;
+}
+
+.processo-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.funil-img {
+    width: 100%;
+    max-width: 520px;
+    border-radius: var(--radius-xl);
+    filter: drop-shadow(0 24px 48px rgba(124, 58, 237, 0.2));
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.funil-img:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0 32px 64px rgba(124, 58, 237, 0.35));
+}
+
+.processo-etapas {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.etapa-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    transition: var(--transition);
+    cursor: default;
+}
+
+.etapa-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: var(--border);
+    transform: translateX(6px);
+}
+
+.etapa-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.etapa-content {
+    flex: 1;
+}
+
+.etapa-titulo {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.etapa-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+/* =========================================
    RESULTADOS
    ========================================= */
 .resultados {
@@ -1239,9 +1325,75 @@ img {
     transform: translateY(0);
 }
 
+
+/* =========================================
+   FUNIL CSS (substitui imagem)
+   ========================================= */
+.funil-css {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    max-width: 380px;
+    padding: 8px 0;
+}
+
+.funil-step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    border-radius: var(--radius-md);
+    padding: 14px 24px;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    cursor: default;
+    width: 100%;
+    justify-content: center;
+}
+
+.funil-step:hover {
+    transform: scale(1.03);
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-glow);
+}
+
+.funil-step i {
+    font-size: 18px;
+}
+
+.funil-step-1 { background: rgba(139, 92, 246, 0.12); border-color: rgba(139, 92, 246, 0.3); color: #a78bfa; width: 94%; }
+.funil-step-2 { background: rgba(239, 68, 68, 0.10); border-color: rgba(239, 68, 68, 0.3); color: #f87171; width: 86%; }
+.funil-step-3 { background: rgba(20, 184, 166, 0.10); border-color: rgba(20, 184, 166, 0.3); color: #2dd4bf; width: 78%; }
+.funil-step-4 { background: rgba(245, 158, 11, 0.10); border-color: rgba(245, 158, 11, 0.3); color: #fbbf24; width: 70%; }
+.funil-step-5 { background: rgba(59, 130, 246, 0.10); border-color: rgba(59, 130, 246, 0.3); color: #60a5fa; width: 62%; }
+.funil-step-6 {
+    background: var(--gradient-main);
+    border-color: transparent;
+    color: #fff;
+    width: 54%;
+    box-shadow: 0 8px 30px rgba(124, 58, 237, 0.45);
+    animation: pulseFunil 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseFunil {
+    0%, 100% { box-shadow: 0 8px 30px rgba(124, 58, 237, 0.45); }
+    50% { box-shadow: 0 8px 40px rgba(124, 58, 237, 0.75); }
+}
+
+.funil-arrow {
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 2px 0;
+}
+
 /* =========================================
    RESPONSIVE
    ========================================= */
+
 @media (max-width: 1024px) {
     .servicos-grid {
         grid-template-columns: 1fr 1fr;
@@ -1313,6 +1465,15 @@ img {
 
     .sobre-visual {
         display: none;
+    }
+
+    .processo-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .funil-css {
+        max-width: 100%;
     }
 
     .servicos-grid {
