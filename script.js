@@ -26,7 +26,7 @@ navLinks.querySelectorAll('.nav-link').forEach(link => {
 
 // ── Reveal on scroll ──────────────────────────
 const revealEls = document.querySelectorAll(
-    '.servico-card, .resultado-card, .depoimento-card, .sobre-grid > *, .contato-grid > *'
+    '.servico-card, .resultado-card, .depoimento-card, .sobre-grid > *, .contato-grid > *, .processo-visual, .processo-etapas'
 );
 
 revealEls.forEach(el => el.classList.add('reveal'));
@@ -38,9 +38,16 @@ const revealObserver = new IntersectionObserver(entries => {
             revealObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 
 revealEls.forEach(el => revealObserver.observe(el));
+
+// Observa também qualquer elemento com .reveal já definido no HTML
+document.querySelectorAll('.reveal').forEach(el => {
+    if (!el.classList.contains('visible')) {
+        revealObserver.observe(el);
+    }
+});
 
 // ── Counter animation ─────────────────────────
 function animateCount(el) {
