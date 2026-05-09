@@ -214,7 +214,7 @@ img {
 }
 
 .nav-logo img {
-    height: 32px;
+    height: 38px;
     width: auto;
     object-fit: contain;
     transition: var(--transition);
@@ -1443,6 +1443,10 @@ img {
 
     .nav-links.open {
         display: flex;
+    }
+
+    .nav-logo img {
+        height: 28px;
     }
 
     .nav-link {
