@@ -1,5 +1,5 @@
 /* =============================================
-   Moacyr Barrois Portfolio - script.js
+   Moacyr Barros Portfolio - script.js
    ============================================= */
 
 // ── Navbar scroll effect ──────────────────────
@@ -57,26 +57,23 @@ function animateCount(el) {
 
     function step(now) {
         const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3); // ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.round(eased * target);
         if (progress < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
 }
 
-const counters = document.querySelectorAll('.stat-value, .count');
-let counted = false;
-
 const counterObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting && !counted) {
-            counted = true;
-            counters.forEach(c => animateCount(c));
+        if (entry.isIntersecting) {
+            animateCount(entry.target);
+            counterObserver.unobserve(entry.target);
         }
     });
 }, { threshold: 0.3 });
 
-if (counters.length > 0) counterObserver.observe(counters[0]);
+document.querySelectorAll('.stat-value, .count').forEach(el => counterObserver.observe(el));
 
 // ── Testimonial Slider ────────────────────────
 const track = document.getElementById('depoimentos-track');

@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Ruby HTTP Server",
+      "runtimeExecutable": "ruby",
+      "runtimeArgs": [
+        "-e",
+        "require 'socket'; R='/Users/moacyrbarros/Documents/moacyr-preview'; M={'.html'=>'text/html;charset=utf-8','.css'=>'text/css','.js'=>'application/javascript','.png'=>'image/png','.jpg'=>'image/jpeg','.svg'=>'image/svg+xml','.ico'=>'image/x-icon','.xml'=>'application/xml'}; s=TCPServer.new('0.0.0.0',3000); $stdout.puts 'running'; $stdout.flush; loop do; begin; c=s.accept; req=c.gets.to_s; 20.times{c.gets rescue nil}; path=req.split(' ')[1].to_s.split('?')[0]; path='/index.html' if path=='/'; f=R+path.gsub('..',''); if File.file?(f); b=File.binread(f); m=M[File.extname(f).downcase]||'application/octet-stream'; c.print \"HTTP/1.1 200 OK\\r\\nContent-Type: #{m}\\r\\nContent-Length: #{b.bytesize}\\r\\nConnection: close\\r\\n\\r\\n\"; c.print b; else; c.print \"HTTP/1.1 404 Not Found\\r\\nContent-Type: text/plain\\r\\n\\r\\nNot Found\"; end; c.close; rescue; end; end"
+      ],
+      "port": 3000
+    }
+  ]
+}
