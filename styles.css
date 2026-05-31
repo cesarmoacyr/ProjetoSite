@@ -255,10 +255,6 @@ img {
     box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
 }
 
-.accent {
-    color: var(--accent-violet);
-}
-
 .hamburger {
     display: none;
     flex-direction: column;
@@ -403,7 +399,6 @@ img {
     backdrop-filter: blur(10px);
     animation: fadeInUp 0.7s ease 0.4s both;
     flex-wrap: wrap;
-    gap: 0;
 }
 
 .stat-item {
@@ -770,19 +765,6 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.funil-img {
-    width: 100%;
-    max-width: 520px;
-    border-radius: var(--radius-xl);
-    filter: drop-shadow(0 24px 48px rgba(124, 58, 237, 0.2));
-    transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.funil-img:hover {
-    transform: scale(1.03);
-    filter: drop-shadow(0 32px 64px rgba(124, 58, 237, 0.35));
 }
 
 .processo-etapas {
@@ -1265,8 +1247,9 @@ img {
     font-size: 28px;
     color: #fff;
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-    transition: var(--transition);
+    transition: var(--transition), opacity 0.5s ease;
     animation: waPulse 2.5s infinite;
+    opacity: 0;
 }
 
 @keyframes waPulse {
